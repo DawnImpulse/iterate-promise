@@ -1,0 +1,16 @@
+{
+  "name": "iterate-promise",
+  "version": "1.0.0",
+  "description": "Iterate Promise is an npm package used for synchronizing - async loop calls.",
+  "main": "index.js",
+  "author": "Dawn Impulse",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DawnImpulse/iterate-promise.git"
+  },
+  "dependencies": {
+    "deasync": "0.1.12",
+    "promise": "8.0.1"
+  }
+}
