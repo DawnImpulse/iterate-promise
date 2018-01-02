@@ -71,7 +71,7 @@ Iterate promise offers a simple and easy solution for this problem.
         + error - the error returned by the async function
 
 ### Versions
-+ `v1.0.0` 
++ `v1.0.1` 
 
     Initial release - containing the basic `forEach` function only.
 

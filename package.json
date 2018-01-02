@@ -1,6 +1,6 @@
 {
   "name": "iterate-promise",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Iterate Promise is an npm package used for synchronizing async loop calls based on 'deasync' blocking mechanism by calling Node.js event loop",
   "main": "index.js",
   "author": "Dawn Impulse",
