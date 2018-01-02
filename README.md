@@ -1,10 +1,10 @@
 # Iterate Promise
 
-> Iterate promise is an _npm package_ used for synchronizing - async loop calls.
+> Iterate Promise is an npm package used for synchronizing async loop calls based on 'deasync' blocking mechanism by calling Node.js event loop.
 
 ### Problem
 
-While looping through an iterable set, a problem arises when we wish to perform an aync task on each item of the set and also perform a task in same sequential order with the response received.
+While looping through an iterable set, a problem arises when we wish to perform an async task on each item of the set and also perform a task in same sequential order with the response received.
 
 ### Solution
 
@@ -22,37 +22,46 @@ Iterate promise offers a simple and easy solution for this problem.
     + `afterEach` - Work to perform after each loop async code successfully executes.
          + The function will have a single position variable which the iterate-promise package will return (current position of the loop).
 
-    Example -
+    ##### Example -
     > Using ES6 syntax
+    
     ~~~~
     let iPromise = require('iterate-promise');
 
     iPromise.forEach(array, (position) => { //forEach function
         return new Promise(
             function (resolve, reject) {
-                request({
+            
+                request({                   //async call
                     uri: array[position],
                     method: "GET"
+                    
                 }, (error, result, body) => {
+                                            //response from async call
                     if (error) {
                         reject(error);
                     } else {
                         newArray.push(JSON.parse(body));
                         resolve();
                     }
+                    
                 });
             }
         );
-    }, (position) => { //afterEach function
+        
+    }, (position) => {                   //afterEach function
+    
         console.log(position);
-        console.log(newArray[position].id);
-    }).then(() => { //after the complete loop successfully executes
-        console.log("Done");
-        process.exit();
-    }).catch((errorObject) => { //if it fails (Read below)
+        
+    }).then(() => {                     //after the complete loop successfully executes
+    
+        console.log("Done");        
+        
+    }).catch((errorObject) => {         //if it fails (Read below)
+    
         console.log(errorObject.position);
         console.log(errorObject.error);
-        process.exit();
+        
     });
     ~~~~
 
@@ -66,16 +75,21 @@ Iterate promise offers a simple and easy solution for this problem.
 
     Initial release - containing the basic `forEach` function only.
 
-### Future (after v1.0.0)
+### Upcoming (v1.1.0)
 + A new `forEach` _function_ which will continue working even if a single iteration fails.
 
 ### Special Thanks
 + [Deasync](https://www.npmjs.com/package/deasync)
 + [Promise](https://www.npmjs.com/package/promise)
 
+### Contact
++ Twitter - @dawnimpulse
+
 ### License (ISC)
 
 ~~~~
+ISC Licence
+
 Copyright 2018 Saksham (DawnImpulse)
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted,
