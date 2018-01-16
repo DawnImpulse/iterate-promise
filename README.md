@@ -70,13 +70,48 @@ Iterate promise offers a simple and easy solution for this problem.
         + position - position at which the loop fails
         + error - the error returned by the async function
 
++ `forEachWorking` function
+
+    ~~~~
+    forEachWorking(iterableSet, onEach, onEachError,afterEach)
+    ~~~~
+    + `onEachError` - If an error occurs on single item of the iterable set.
+    
+    ##### Example -
+     > Using ES6 syntax
+        
+     ~~~~
+     let iPromise = require('iterate-promise');
+    
+     iPromise.forEachWorking(array, (position) => { //forEach function
+            return new Promise(
+                function (resolve, reject) {
+                    //todo                  
+                }
+            );
+            
+        },(position,error) => {                   //onEachError function
+                  
+            console.log(position + error);
+                      
+        },(position) => {                   //afterEach function
+            
+        }).then(() => {                     //after the complete loop successfully executes
+                                 
+        }).catch((errorObject) => { 
+        
+        });
+     ~~~~ 
+    >Note : If there is a user defined error anywhere in any function , the execution directly 
+    goes to the catch function without working any further
 ### Versions
++ `v1.1.0`
+
+    New : `forEachWorking` _function_ will continue working even if a single iteration fails
+    
 + `v1.0.1` 
 
     Initial release - containing the basic `forEach` function only.
-
-### Upcoming (v1.1.0)
-+ A new `forEach` _function_ which will continue working even if a single iteration fails.
 
 ### Special Thanks
 + [Deasync](https://www.npmjs.com/package/deasync)
